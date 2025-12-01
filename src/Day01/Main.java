@@ -14,41 +14,38 @@ public class Main {
         try(Scanner scanner = new Scanner(f)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
+                System.out.println("Current Number: " + number);
                 if (line.contains("L")) {
                     line = line.substring(1);
                     int input = Integer.parseInt(line);
-                    System.out.println("Left INT " + input);
+                    System.out.println("(-) Left Input: " + input);
 
-                    int temp = (input - number);
-                    System.out.println(temp);
-                    if (temp >= 99) {
-                        number = temp % 99;
-                    } else if (temp <= 0) {
-                        number = (-1) * temp;
+                    int temp = 0;
+                    if (input > 99) {
+                        input = input % 100;
+                        temp = input;
                     } else {
-                        number = 99 - temp + 1;
+                        temp = input;
                     }
+                    number = (number - temp) < 0 ? 100 + (number - temp) : number - temp;
 
-                    System.out.println("new number " + number);
 
                 } else if (line.contains("R")) {
                     line = line.substring(1);
                     int input = Integer.parseInt(line);
-                    System.out.println("Right INT " + input);
+                    System.out.println("(+) Right Input: " + input);
 
-
-                    int temp = number + input;
-                    System.out.println(temp);
-                    if (temp >= 99) {
-                        number = temp % 99 - 1;
-                    } else if (temp <= 0) {
-                        number = (-1) * temp;
+                    int temp = 0;
+                    if (input > 99) {
+                        input = input % 100;
+                        temp = input;
                     } else {
-                        number = temp;
+                        temp = input;
                     }
+                    number = (number + temp) > 99 ? (number + temp) % 100 : number + temp;
 
-                    System.out.println("new numebr " + number);
                 }
+                System.out.println("New Number " + number);
                 if (number == 0) {
                     System.out.println("JACKPOT ---- NUMBER 0 REACHED");
                     zeroCounter++;
