@@ -37,7 +37,7 @@ public class Main {
                     System.out.println("Right INT " + input);
 
 
-                    int temp = number + input;
+                    int temp = input + number;
                     System.out.println(temp);
                     if (temp >= 99) {
                         number = temp % 99 - 1;
