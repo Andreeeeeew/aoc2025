@@ -11,6 +11,7 @@ public class Main {
         File f = new File(path.getFile());
         int highest;
         int secondHighest;
+        int highestAfterHighest;
         int joltage;
         int current;
         int total = 0;
@@ -19,8 +20,9 @@ public class Main {
         try (Scanner scanner = new Scanner(f)) {
 
             while (scanner.hasNextLine()) {
-                highest = 0;
-                secondHighest = 0;
+                highest = -1;
+                secondHighest = -1;
+                highestAfterHighest = -1;
                 String line = scanner.nextLine();
                 System.out.println("-..........-");
                 System.out.println(line);
@@ -43,7 +45,19 @@ public class Main {
                 System.out.print(posHighest + " poshigh");
                 System.out.print(" - " + posSecondHighest + " posSecon \n");
 
-                if (posHighest < posSecondHighest) {
+                for (char c : line.substring(posHighest + 1).toCharArray()) {
+                    current = Integer.parseInt(String.valueOf(c));
+                    if (current > highestAfterHighest) {
+                        highestAfterHighest = current;
+                    }
+                }
+
+                // hardcoded shit hehehe
+                if (highestAfterHighest >= 0) {
+                    String joltageString = String.valueOf(highest) + String.valueOf(highestAfterHighest);
+                    joltage = Integer.parseInt(joltageString);
+                    System.out.println(joltage);
+                } else if (posHighest < posSecondHighest) {
                     String joltageString = String.valueOf(highest) + String.valueOf(secondHighest);
                     joltage = Integer.parseInt(joltageString);
                     System.out.println(joltage);
