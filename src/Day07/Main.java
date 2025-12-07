@@ -36,7 +36,6 @@ public class Main {
                         } else if (prevArray[i] == '|') {
                             lineArray[i] = '|';
                             line = String.valueOf(lineArray);
-                        } else {
                         }
                     }
                 }
