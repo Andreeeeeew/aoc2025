@@ -12,7 +12,7 @@ public class Main {
         URL path = Day07.Main.class.getResource("Input.txt");
         File f = new File(path.getFile());
         String previousLine = "";
-        List<String> full = new ArrayList<>();
+        List<String> fullList = new ArrayList<>();
         int total = 0;
         try (Scanner scanner = new Scanner(f)) {
             while (scanner.hasNextLine()) {
@@ -42,12 +42,12 @@ public class Main {
 
                 previousLine = line;
                 System.out.println("newp " + previousLine);
-                full.add(previousLine);
+                fullList.add(previousLine);
                 System.out.println();
             }
         }
 
-        for (String s : full) {
+        for (String s : fullList) {
             System.out.println(s);
         }
         System.out.println("\nTotal is " + total);
